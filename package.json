@@ -2,7 +2,7 @@
   "name": "new-todo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "public/index.html",
   "scripts": {
     "start": "parcel serve ./src/index.html",
     "build": "parcel build ./src/index.html --public-url ./",
