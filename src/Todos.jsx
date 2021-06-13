@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Button } from './Button'
+import { PageContainer } from './PageContainer'
+import { Row } from './Row'
 import { user } from './user'
 
 export const Todos = () => {
@@ -41,20 +44,25 @@ export const Todos = () => {
   }
 
   return (
-    <div>
+    <PageContainer>
       <ul>
         {Object.entries(todos).map(
           ([id, todo]) =>
             todo && (
               <li key={id}>
-                <input value={todo.value} onChange={changeTodo(id, todo)}></input>{' '}
+                <input
+                  value={todo.value}
+                  onChange={changeTodo(id, todo)}
+                ></input>{' '}
                 <button onClick={removeTodo(id)}>x</button>
               </li>
             )
         )}
-        <input onBlur={addTodo}></input>
+        <input onBlur={addTodo} placeholder="To-do"></input>
       </ul>
-      <button onClick={signOut}>sign out</button>
-    </div>
+      <Row centered>
+        <Button onClick={signOut}>Sign out</Button>
+      </Row>
+    </PageContainer>
   )
 }
