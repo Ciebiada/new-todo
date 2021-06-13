@@ -6,22 +6,10 @@ import { Button } from './Button'
 import { Input } from './Input'
 import styled from 'styled-components'
 
-const Container = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const Panel = styled.div`
-  width: 100%;
-  max-width: 400px;
-  /* background: #222;
-  border-radius: 10px; */
-`
-
 const Row = styled.div`
+  display: flex;
   margin: 20px;
+  gap: 10px;
   ${(props) =>
     props.centered &&
     `
@@ -53,34 +41,30 @@ export const SignIn = () => {
   }
 
   return (
-    <Container>
-      <Panel>
-        <form>
-          <Row>
-            <Input
-              placeholder="Username"
-              value={username}
-              onChange={changeUsername}
-            />
-          </Row>
-          <Row>
-            <Input
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={changePassword}
-            />
-          </Row>
-          <Row centered>
-            <Button onClick={signIn} primary>
-              Sign in
-            </Button>
-          </Row>
-          <Row centered>
-            <Button onClick={signUp}>Sign up</Button>
-          </Row>
-        </form>
-      </Panel>
-    </Container>
+    <PageContainer>
+      <form>
+        <Row>
+          <Input
+            placeholder="Username"
+            value={username}
+            onChange={changeUsername}
+          />
+        </Row>
+        <Row>
+          <Input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={changePassword}
+          />
+        </Row>
+        <Row>
+          <Button onClick={signIn} primary>
+            Sign in
+          </Button>
+          <Button onClick={signUp}>Sign up</Button>
+        </Row>
+      </form>
+    </PageContainer>
   )
 }

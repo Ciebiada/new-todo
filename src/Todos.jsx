@@ -4,6 +4,7 @@ import { Button } from './Button'
 import { PageContainer } from './PageContainer'
 import { Row } from './Row'
 import { user } from './user'
+import { TodoInput } from './TodoInput'
 
 export const Todos = () => {
   const [todos, setTodos] = useState({})
@@ -45,22 +46,16 @@ export const Todos = () => {
 
   return (
     <PageContainer>
-      <ul>
-        {Object.entries(todos).map(
-          ([id, todo]) =>
-            todo && (
-              <li key={id}>
-                <input
-                  value={todo.value}
-                  onChange={changeTodo(id, todo)}
-                ></input>{' '}
-                <button onClick={removeTodo(id)}>x</button>
-              </li>
-            )
-        )}
-        <input onBlur={addTodo} placeholder="To-do"></input>
-      </ul>
-      <Row centered>
+      {Object.entries(todos).map(
+        ([id, todo]) =>
+          todo && (
+            <Row key={id}>
+              <TodoInput value={todo.value} onChange={changeTodo(id, todo)} />
+            </Row>
+          )
+      )}
+      <TodoInput onBlur={addTodo} placeholder="To-do" />
+      <Row>
         <Button onClick={signOut}>Sign out</Button>
       </Row>
     </PageContainer>
